@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 		
+		<script type='text/javascript' src='currency_cost_data.js'></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+	</head>
+	<body>
+				
+	Country: <br>
+	<input list="browser" id="selected_country"  onkeypress="return searchKeyPress(event);">
+		<datalist id="browsers">
+			<option value="Bulgaria">
+			<option value="Canada">
+			<option value="Liechtenstein">
+			<option value="Czech Republic">
+			<option value="Denmark">
+			<option value="United Kingdom">
+			<option value="Hungary">
+			<option value="Norway">
+			<option value="New Zealand">
+			<option value="Poland">
+			<option value="Romania">
+			<option value="Sweden">
+			<option value="United States of America">
+			<option value="Austria">
+			<option value="Belgium">
+			<option value="Cyprus">
+			<option value="Estonia">
+			<option value="Finland">
+			<option value="France">
+			<option value="Germany">
+			<option value="Greece">
+			<option value="Ireland">
+			<option value="Italy">
+			<option value="Latvia">
+			<option value="Lithuania">
+			<option value="Luxembourg">
+			<option value="Malta">
+			<option value="Netherlands">
+			<option value="Portugal">
+			<option value="Slovakia">
+			<option value="Slovenia">
+			<option value="Spain">
+			<option value="Switzerland">
+			<option value="Australia">
+		</datalist>
+		<br>Amount: <BR>
+		<input id="selected_amount" onkeypress="return searchKeyPress(event);">
+		<br>
+		<button id="select_country" onclick="recalculate_table(obj)">Submit</button>
+		</input>
+
+		<div id="curency_table"></div>
+
+
+
+		<script type='text/javascript' src='script.js'></script>
+	</body>
+
+</html>
+
