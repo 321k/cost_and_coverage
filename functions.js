@@ -7,6 +7,21 @@ create_map = function(filtered_json){
   }
   to_countries = $.unique(to_countries)
 
+  from_business_not_allowed = []
+  for(var i=0; i<filtered_json.length; i++){
+    if(filtered_json[i]["from_business_allowed"] === false){
+      from_business_not_allowed.push(filtered_json[i]["from_country_no"])
+    }
+  }
+
+  to_business_not_allowed = []
+  for(var i=0; i<filtered_json.length; i++){
+    if(filtered_json[i]["to_business_allowed"] === false){
+      to_business_not_allowed.push(filtered_json[i]["to_country_no"])
+    }
+  }
+
+
   var from_countries = []
   for(var i=0; i<filtered_json.length; i++){
     from_countries[i] = filtered_json[i]["from_country_no"];
@@ -14,7 +29,7 @@ create_map = function(filtered_json){
   from_countries = $.unique(from_countries)
 
 
-  var width =world-110m200;
+  var width = 1100;
   var height = 600;
 
   var projection = d3.geo.equirectangular();
@@ -34,12 +49,17 @@ create_map = function(filtered_json){
       .append("path")
       .attr("d", path)
       .attr("id", function(d, i) { return d["id"] ; })
-      .style("fill", function(d, i) { if($.inArray(d["id"], to_countries) >= 0) {
-        return "#00BFFF"
-      } else if ($.inArray(d["id"], from_countries) >= 0){
-        return "#0054FF"
-      } else {
-        return "#B9D3EE"}; 
+      .style("fill", function(d, i) { 
+        if ($.inArray(d["id"], from_countries) >= 0){
+            return "#0054FF";
+        } else if($.inArray(d["id"], to_business_not_allowed) >= 0){
+            return "grey"
+        } else if ($.inArray(d["id"], from_business_not_allowed) >= 0){
+            return "grey"
+        } else if($.inArray(d["id"], to_countries) >= 0) {
+            return "#00BFFF";
+        } else {
+            return "#B9D3EE"}; 
       })
       .on('mouseover', function(d, i) {
         var currentState = this;
@@ -50,7 +70,14 @@ create_map = function(filtered_json){
             .style({
                 'fill-opacity':1
             });
-      });
+      })
+      .attr("class", function(d, i) {
+        if($.inArray(d["id"], to_business_not_allowed) >= 0) {
+          return "business_not_allowed";
+        } else {
+          return "business_allowed";
+        }
+      })
   });
 }
 
