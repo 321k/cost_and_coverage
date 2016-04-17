@@ -9,11 +9,14 @@
   		<script src="http://d3js.org/topojson.v0.min.js"></script>
 
 	</head>
-	<body>
 
-
-	Country: <br>
-	<input list="browser" id="selected_country"  onkeypress="return searchKeyPress(event);">
+<table>
+	<table>
+	<td><tr>
+	<center>
+	
+	
+	<input list="browsers" id="selected_country" type="text" value="Select your home country." onfocus="this.value='';" onkeypress="return searchKeyPress(event);"/>
 		<datalist id="browsers">
 			<option value="Bulgaria">
 			<option value="Canada">
@@ -50,16 +53,20 @@
 			<option value="Switzerland">
 			<option value="Australia">
 		</datalist>
-		<br>Amount: <BR>
-		<input id="selected_amount" onkeypress="return searchKeyPress(event);">
+		
+		<input id="selected_amount" type="text" onkeypress="return searchKeyPress(event);" value="Select amount to send." onfocus="this.value='';">
 		<br>
 		<button id="select_country" onclick="recalculate_table(obj)">Submit</button>
-		</input>
-
+	</td></tr>
+	<tr><td>
+		<center>
 		<div id="map"></div>
-		<div id="curency_table"></div>
-
-
+	</td></tr>
+	<tr><td>
+		<center>
+		<div id="curency_table" cass="curency_table"></div>
+	</td></tr>
+</table>
 
 		<script type='text/javascript' src='script.js'></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
