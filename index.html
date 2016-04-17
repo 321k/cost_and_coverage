@@ -1,12 +1,17 @@
 <html>
 	<head>
+		<meta charset="utf-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 		
 		<script type='text/javascript' src='currency_cost_data.js'></script>
+		<script type='text/javascript' src='functions.js'></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+  		<script src="http://d3js.org/topojson.v0.min.js"></script>
 
 	</head>
 	<body>
-				
+
+
 	Country: <br>
 	<input list="browser" id="selected_country"  onkeypress="return searchKeyPress(event);">
 		<datalist id="browsers">
@@ -51,12 +56,14 @@
 		<button id="select_country" onclick="recalculate_table(obj)">Submit</button>
 		</input>
 
+		<div id="map"></div>
 		<div id="curency_table"></div>
 
 
 
 		<script type='text/javascript' src='script.js'></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	</body>
-
+		
 </html>
 
